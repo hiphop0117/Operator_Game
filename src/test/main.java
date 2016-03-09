@@ -5,7 +5,7 @@ import java.util.Random;
 
 class Problem{
 	int frontNumber;
-	boolean operator;
+	boolean operator;  //true= x, false= +
 	int backNumber;
 	
 	public Problem(){
@@ -16,13 +16,46 @@ class Problem{
 }
 
 class MyProgram {
+	
+	
+	
 	public static void main(String []args) {
+		final int NUMBER_OF_PROBLEM = 3;
+		long start = System.currentTimeMillis();
+		Scanner scan = new Scanner(System.in);
+		
 		//Generate 10 problem
-		for (int i = 0; i < 10;i++){		
+		for (int i = 0; i < NUMBER_OF_PROBLEM;i++){
 			Problem randomProblem = getRandomProblem();
-			printProblem(randomProblem);
+			int userAnswer =0;// = scan.nextInt();
+			
+			while(userAnswer != getTrueAnswer(randomProblem)){
+				
+				printProblem(randomProblem);
+				userAnswer = scan.nextInt();
+			}
+			
+			System.out.println("("+(i+1)+")");
 		}
+		
+		long end = System.currentTimeMillis();		
+		System.out.println( "run time: " + ( end - start )/1000.0 + "sec");
+		
+		scan.close();	
 	}
+	
+	public static int getTrueAnswer(Problem p) {
+		int TrueAnswer;
+		if(p.operator){
+			TrueAnswer=p.frontNumber*p.backNumber;
+		}
+		else{
+			TrueAnswer=p.frontNumber+p.backNumber;				
+		}
+		return TrueAnswer;
+	}
+	
+	
 		
 	public static int getRandomNumber() {
 		Random oRandom = new Random();
@@ -55,7 +88,7 @@ class MyProgram {
 		
 		System.out.print(pro.backNumber);
 		System.out.print("=");
-		System.out.print("\n");
+//		System.out.print("\n");
 	}
 		
 	public static String methodName() {
@@ -66,19 +99,12 @@ class MyProgram {
 		
 		long start = System.currentTimeMillis();
 		System.out.println("Hello World");
-		int message;
-		Scanner scan = new Scanner(System.in);   
-	        
-		System.out.println("input:");
-	        
-		message = scan.nextInt();
-		System.out.println(message);
 		
 		long end = System.currentTimeMillis();
 		System.out.println(end +" "+ start);
 		System.out.println( "run time: " + ( end - start )/1000.0 );
 		
-		scan.close();
+
 		
 		return "Fantastic Park";
 	}
