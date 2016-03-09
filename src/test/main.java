@@ -15,14 +15,42 @@ class Problem{
 	}
 }
 
+
+
 class MyProgram {
-	
-	
+	static Scanner scan = new Scanner(System.in);
 	
 	public static void main(String []args) {
+		final int MENU_GAME_START = 1;
+		final int MENU_GAME_RANK  = 2;
+		final int MENU_GAME_END   = 3;
+		
+		//메뉴화면		
+		System.out.println("1.게임하기\n2.랭킹보기\n3.종료\n무엇을 할지 입력하세요(1-3)");
+	
+		int userAnswer = scan.nextInt();
+		switch (userAnswer){				
+		case MENU_GAME_START: 
+			getGametime();
+			break;
+		case MENU_GAME_RANK:
+			System.out.println("미구현");
+			break;
+		case MENU_GAME_END:
+			System.out.println("게임을 종료합니다.");
+			break;	
+		default:
+			System.out.println("제대로 입력하세요.");
+			break;
+		}
+		
+		
+	}
+	
+	public static void getGametime() {
 		final int NUMBER_OF_PROBLEM = 3;
 		long start = System.currentTimeMillis();
-		Scanner scan = new Scanner(System.in);
+		
 		
 		//Generate 10 problem
 		for (int i = 0; i < NUMBER_OF_PROBLEM;i++){
@@ -41,7 +69,7 @@ class MyProgram {
 		long end = System.currentTimeMillis();		
 		System.out.println( "run time: " + ( end - start )/1000.0 + "sec");
 		
-		scan.close();	
+		
 	}
 	
 	public static int getTrueAnswer(Problem p) {
@@ -54,8 +82,6 @@ class MyProgram {
 		}
 		return TrueAnswer;
 	}
-	
-	
 		
 	public static int getRandomNumber() {
 		Random oRandom = new Random();
@@ -88,24 +114,5 @@ class MyProgram {
 		
 		System.out.print(pro.backNumber);
 		System.out.print("=");
-//		System.out.print("\n");
-	}
-		
-	public static String methodName() {
-		
-		System.out.println("Press Enter to continue");
-		try{System.in.read();}
-		catch(Exception e){}
-		
-		long start = System.currentTimeMillis();
-		System.out.println("Hello World");
-		
-		long end = System.currentTimeMillis();
-		System.out.println(end +" "+ start);
-		System.out.println( "run time: " + ( end - start )/1000.0 );
-		
-
-		
-		return "Fantastic Park";
 	}
 }
