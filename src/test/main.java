@@ -17,6 +17,7 @@ class Problem{
 
 class MyProgram {
 	public static void main(String []args) {
+		//Generate 10 problem
 		for (int i = 0; i < 10;i++){		
 			Problem randomProblem = getRandomProblem();
 			printProblem(randomProblem);
